@@ -50,6 +50,13 @@ function showTripData(trip: Trip): JSX.Element {
             <span className="endDate">{trip.endDate}</span>
           </div>
           <img src={trip.image} alt={trip.name} className="tripImg" />
+          <span className="description">{trip.description}</span>
+          <span className="price">{`price: ${trip.price}`}</span>
+          <span className="activities">
+            {trip.activities.map((act,i) => (
+              <p>{`activities ${i+1}: ${act}`}</p>
+            ))}
+          </span>
         </div>
       </div>
     </div>

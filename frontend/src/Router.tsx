@@ -15,7 +15,7 @@ function Ruoter() {
                     <Route path="/TripsDetail" element={<TripsDetail />} />
                     <Route path="/TripsDetail/:id" element={<TripsDetail />} />
                     <Route path="/NewTripForm" element={<NewTripForm />} />
-                    <Route path="/NewTripForm/:id" element={<UpdateTripForm />} />
+                    <Route path="/UpdateTripForm/:id" element={<UpdateTripForm />} />
                     <Route path="*" element={<Home />} />
                 </Routes>
             </Router>

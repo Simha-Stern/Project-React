@@ -15,7 +15,7 @@ interface Trip {
 }
 type Activ = string;
 
-async function fetchTrip(id: string): Promise<Trip | undefined> {
+export async function fetchTrip(id: string): Promise<Trip | undefined> {
   try {
     const response = await fetch(`http://localhost:3000/api/trips/${id}`);
 
@@ -58,6 +58,9 @@ function showTripData(trip: Trip): JSX.Element {
             ))}
           </span>
         </div>
+        <Link to={`/UpdateTripForm/${trip.id}`}>
+          <button>Update Trip</button>
+        </Link>
       </div>
     </div>
   );

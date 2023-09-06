@@ -61,6 +61,9 @@ function showTripData(trip: Trip): JSX.Element {
         <Link to={`/UpdateTripForm/${trip.id}`}>
           <button>Update Trip</button>
         </Link>
+        <Link to={`/DeleteTrip/${trip.id}`}>
+        <button>Delete Trip</button>
+        </Link>
       </div>
     </div>
   );

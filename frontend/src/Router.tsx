@@ -4,6 +4,7 @@ import Trips from './components/Trips';
 import TripsDetail from './components/TripsDetail';
 import NewTripForm from './components/NewTripForm';
 import UpdateTripForm from './components/UpdateTripForm';
+import DeleteTrip from './components/DeleteTrip';
 
 function Ruoter() {
     return (
@@ -15,6 +16,7 @@ function Ruoter() {
                     <Route path="/TripsDetail" element={<TripsDetail />} />
                     <Route path="/TripsDetail/:id" element={<TripsDetail />} />
                     <Route path="/NewTripForm" element={<NewTripForm />} />
+                    <Route path="/DeleteTrip/:id" element={<DeleteTrip />} />
                     <Route path="/UpdateTripForm/:id" element={<UpdateTripForm />} />
                     <Route path="*" element={<Home />} />
                 </Routes>

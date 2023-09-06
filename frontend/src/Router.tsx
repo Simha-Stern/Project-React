@@ -7,7 +7,7 @@ import UpdateTripForm from './components/UpdateTripForm';
 import DeleteTrip from './components/DeleteTrip';
 import UserRegistration from './components/UserRegistration';
 import UserLogin from './components/UserLogin';
-import Registered from './components/registered';
+import Registered from './components/Registered';
 
 
 function Ruoter() {

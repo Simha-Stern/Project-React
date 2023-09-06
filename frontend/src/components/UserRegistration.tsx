@@ -1,6 +1,7 @@
 // import './style.css'
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Context } from "./context";
 
 interface UserData {
   email: string;
@@ -16,6 +17,14 @@ const UserRegistration: React.FC = () => {
   };
   const [formData, setFormData] = useState<UserData>(initialFormData);
   const Navigate = useNavigate()
+
+  // const {token} = UseUserContext()
+  
+  const context = useContext(Context);
+  const token = context?.token || "default-token-value";
+  const setToken = context?.setToken
+  
+  // const token = ContextUse.token
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -34,7 +43,7 @@ const UserRegistration: React.FC = () => {
       const response = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: {
-          'authorization': "test-token",
+          'authorization': token || 'test-token',
           "Content-Type": "application/json"
         },
         body: JSON.stringify(formData),
@@ -45,6 +54,8 @@ const UserRegistration: React.FC = () => {
 
       if (response.ok) {
         const responseData = await response.json();
+        if (setToken)
+        {setToken(responseData.data.responseObj.token)}
         Navigate('/registered')
         console.log("created new User", responseData);
       } else {

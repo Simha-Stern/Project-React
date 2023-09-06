@@ -1,13 +1,99 @@
-import { Link } from "react-router-dom";
+// import './style.css'
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function serRegistration(): JSX.Element {
+interface UserData {
+  name: string;
+  email: string;
+  role: string;
+}
+
+const UserRegistration: React.FC = () => {
+  const initialFormData: UserData = {
+    name: "",
+    email: "",
+    role: 'admin'
+  };
+  const [formData, setFormData] = useState<UserData>(initialFormData);
+  const Navigate = useNavigate()
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(formData);
+    
+
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/register", {
+        method: "POST",
+        headers: {
+          'authorization': "test-token",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData),
+        redirect: 'follow'
+      }) 
+      console.log(JSON.stringify(formData));
+      
+
+      if (response.ok) {
+        const responseData = await response.json();
+        Navigate('/registered')
+        console.log("created new User", responseData);
+      } else {
+        const errorData = await response.json();
+        console.error("failed to create new user", errorData);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+      if (error instanceof TypeError && error.message === "Failed to fetch") {
+        console.error("Network error. Please check your internet connection.");
+      } else {
+        console.error("An unexpected error occurred. Please try again later.");
+      }
+    }
+  };
+
   return (
-    <div>
+    <div className="new-user-form">
       <Link to={"/"}>
-        <button>Home</button>
+        <button className="btn btn-primary">Home</button>
       </Link>
-      <h1>serRegistration</h1>
+      <h1>UserRegistration</h1>
+      <form method="post" onSubmit={handleSubmit} >
+        <div  className="form-group">
+          <label>Name: </label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            placeholder="Name"
+            onChange={handleInputChange}
+          />
+        </div>
+        <div  className="form-group">
+          <label>email: </label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            placeholder="email"
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <button type="submit"  className="btn btn-success">Sign up</button>
+        </div>
+      </form>
     </div>
   );
-}
-export default serRegistration;
+};
+
+export default UserRegistration;

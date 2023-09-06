@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom";
-import "../Styles.css";
 import { ChangeEvent, useEffect, useState } from "react";
 import { fetchTrip } from "./TripsDetail";
 

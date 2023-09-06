@@ -1,6 +1,5 @@
-import './Styles.css';
 import Router from './Router.tsx';
-
+import './Styles.css'
 
 
 function App() {

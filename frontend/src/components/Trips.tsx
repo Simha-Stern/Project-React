@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "../Styles.css";
 import { Link } from "react-router-dom";
 
 interface Trip {
@@ -31,14 +30,14 @@ function TripCard({ trip}: { trip: Trip }): JSX.Element {
   return (
     <Link to={`/TripsDetail/${trip.id}`}>
       <div className="card">
+          <img src={trip.image} alt={trip.name} className="card-img-top" />
         <div className="card-body" id={trip.id}>
           <h3 className="card-title">{trip.name}</h3>
-          <h5 className="card-text">{trip.destination}</h5>
+          <p className="card-text">{trip.destination}</p>
           <div className="dates">
             <span className="startDate">{trip.startDate}</span>
             <span className="endDate">{trip.endDate}</span>
           </div>
-          <img src={trip.image} alt={trip.name} className="tripImg" />
         </div>
       </div>
     </Link>
@@ -77,14 +76,15 @@ function TripList(): JSX.Element {
 
 function Trips(): JSX.Element {
   return (
-    <div>
+    <div className="navbar navbar-expand-lg navbar-light bg-light">
       <Link to={"/"}>
-        <button>Home</button>
+        <button className="navbar-toggler">Home</button>
       </Link>
       <Link to={"/NewTripForm"}>
-        <button>New Trip</button>
+        <button className="navbar-toggler">New Trip</button>
       </Link>
-      <h1>Trips</h1>
+      <br/>
+      <h1 className="display-4 font-weight-bold text-center">Trips</h1>
       <TripList />
     </div>
   );

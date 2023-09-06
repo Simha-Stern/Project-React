@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom";
-import "../Styles.css";
 import { useEffect, useState } from "react";
 
 interface Trip {
@@ -41,7 +40,7 @@ function showTripData(trip: Trip): JSX.Element {
         <button>All Trips</button>
       </Link>
       <h1>TripsDetail</h1>
-      <div className="card" id={trip.id}>
+      <div className="card1" id={trip.id}>
         <div className="card-body">
           <h3 className="card-title">{trip.name}</h3>
           <h5 className="card-text">{trip.destination}</h5>

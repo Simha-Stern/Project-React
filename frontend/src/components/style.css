@@ -1,0 +1,66 @@
+/* Styles for DeleteTrip Component */
+
+/* Container styles */
+div {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Heading styles */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Paragraph styles */
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form styles */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Input styles */
+  input[type="text"] {
+    display: none;
+  }
+  
+  /* Button styles */
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"] {
+    background-color: #ff5733; /* Change to your preferred button color */
+    color: white;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #e44e2b; /* Change to your preferred hover color */
+  }
+  
+  /* Style for the "I'll think again" link */
+  a button {
+    background-color: #007bff; /* Change to your preferred button color */
+    color: white;
+  }
+  
+  a button:hover {
+    background-color: #0056b3; /* Change to your preferred hover color */
+  }
+  

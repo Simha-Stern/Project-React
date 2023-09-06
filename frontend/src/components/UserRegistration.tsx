@@ -3,15 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 interface UserData {
-  name: string;
   email: string;
+  password: string;
   role: string;
 }
 
 const UserRegistration: React.FC = () => {
   const initialFormData: UserData = {
-    name: "",
     email: "",
+    password: "",
     role: 'admin'
   };
   const [formData, setFormData] = useState<UserData>(initialFormData);
@@ -69,22 +69,22 @@ const UserRegistration: React.FC = () => {
       <h1>UserRegistration</h1>
       <form method="post" onSubmit={handleSubmit} >
         <div  className="form-group">
-          <label>Name: </label>
+          <label>email: </label>
           <input
             type="text"
-            name="name"
-            value={formData.name}
-            placeholder="Name"
+            name="email"
+            value={formData.email}
+            placeholder="Email"
             onChange={handleInputChange}
           />
         </div>
         <div  className="form-group">
-          <label>email: </label>
+          <label>password: </label>
           <input
-            type="email"
-            name="email"
-            value={formData.email}
-            placeholder="email"
+            type="text"
+            name="password"
+            value={formData.password}
+            placeholder="Password"
             onChange={handleInputChange}
           />
         </div>
